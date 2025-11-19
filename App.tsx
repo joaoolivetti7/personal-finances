@@ -29,10 +29,10 @@ const App: React.FC = () => {
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
+      localStorage.setItem('theme', 'light');
     } else {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+      localStorage.setItem('theme', 'dark');
     }
   }, [darkMode]);
 
@@ -138,8 +138,6 @@ const App: React.FC = () => {
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <SummaryCards transactions={transactions} />
-
-        <AIAdvisor transactions={transactions} />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column (List) */}
