@@ -43,48 +43,48 @@ const SummaryCards: React.FC<Props> = ({ transactions }) => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-      <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center justify-between">
+      <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between transition-colors duration-300">
         <div>
-          <p className="text-sm font-medium text-slate-500 mb-1">Saldo Total</p>
-          <h3 className={`text-2xl font-bold ${balance >= 0 ? 'text-slate-800' : 'text-red-600'}`}>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Saldo Total</p>
+          <h3 className={`text-2xl font-bold ${balance >= 0 ? 'text-slate-800 dark:text-white' : 'text-red-600 dark:text-red-400'}`}>
             {formatCurrency(balance)}
           </h3>
         </div>
-        <div className="p-3 bg-brand-50 rounded-full text-brand-600">
+        <div className="p-3 bg-brand-50 dark:bg-brand-900/30 rounded-full text-brand-600 dark:text-brand-400">
           <Wallet size={24} />
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center justify-between">
+      <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between transition-colors duration-300">
         <div>
-          <p className="text-sm font-medium text-slate-500 mb-1">Receitas</p>
-          <h3 className="text-2xl font-bold text-emerald-600">{formatCurrency(income)}</h3>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Receitas</p>
+          <h3 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{formatCurrency(income)}</h3>
         </div>
-        <div className="p-3 bg-emerald-50 rounded-full text-emerald-600">
+        <div className="p-3 bg-emerald-50 dark:bg-emerald-900/30 rounded-full text-emerald-600 dark:text-emerald-400">
           <ArrowUpCircle size={24} />
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center justify-between">
+      <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between transition-colors duration-300">
         <div>
-          <p className="text-sm font-medium text-slate-500 mb-1">Despesas Totais</p>
-          <h3 className="text-2xl font-bold text-rose-600">{formatCurrency(expense)}</h3>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Despesas Totais</p>
+          <h3 className="text-2xl font-bold text-rose-600 dark:text-rose-400">{formatCurrency(expense)}</h3>
         </div>
-        <div className="p-3 bg-rose-50 rounded-full text-rose-600">
+        <div className="p-3 bg-rose-50 dark:bg-rose-900/30 rounded-full text-rose-600 dark:text-rose-400">
           <ArrowDownCircle size={24} />
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center justify-between relative overflow-hidden">
+      <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between relative overflow-hidden transition-colors duration-300">
         <div className="relative z-10">
-          <p className="text-sm font-medium text-slate-500 mb-1">Fatura Cartão (Mês)</p>
-          <h3 className="text-2xl font-bold text-purple-600">{formatCurrency(creditCardInvoice)}</h3>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Fatura Cartão (Mês)</p>
+          <h3 className="text-2xl font-bold text-purple-600 dark:text-purple-400">{formatCurrency(creditCardInvoice)}</h3>
         </div>
-        <div className="p-3 bg-purple-50 rounded-full text-purple-600 relative z-10">
+        <div className="p-3 bg-purple-50 dark:bg-purple-900/30 rounded-full text-purple-600 dark:text-purple-400 relative z-10">
           <CreditCard size={24} />
         </div>
         {/* Decorative element */}
-        <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-purple-50 rounded-full opacity-50"></div>
+        <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-purple-50 dark:bg-purple-900/10 rounded-full opacity-50"></div>
       </div>
     </div>
   );

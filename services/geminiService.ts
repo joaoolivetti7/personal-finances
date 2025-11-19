@@ -1,20 +1,9 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Transaction, FinancialAdvice, TransactionType } from "../types";
 
-// Removida a inicialização global que causava o crash no carregamento da página
-// const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const analyzeFinances = async (transactions: Transaction[]): Promise<FinancialAdvice> => {
-  // Verificar a chave apenas no momento da chamada da função
-  const apiKey = process.env.API_KEY;
-
-  if (!apiKey) {
-    throw new Error("Chave de API não configurada no ambiente. O aplicativo está funcionando em modo offline. Configure a variável API_KEY para usar a IA.");
-  }
-
-  // Inicializa a IA apenas quando o usuário solicita a análise
-  const ai = new GoogleGenAI({ apiKey: apiKey });
-
   // Filter and simplify data to reduce token usage and focus on patterns
   const simplifiedData = transactions.map(t => ({
     date: t.date,

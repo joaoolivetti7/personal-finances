@@ -10,7 +10,7 @@ const COLORS = ['#0ea5e9', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'
 
 const CategoryChart: React.FC<Props> = ({ transactions }) => {
   const expenses = transactions.filter(t => t.type === TransactionType.EXPENSE);
-  
+
   const dataMap = expenses.reduce((acc, curr) => {
     acc[curr.category] = (acc[curr.category] || 0) + curr.amount;
     return acc;
@@ -23,16 +23,16 @@ const CategoryChart: React.FC<Props> = ({ transactions }) => {
 
   if (data.length === 0) {
     return (
-      <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-8 h-full flex items-center justify-center text-slate-400 flex-col gap-2">
-        <div className="h-12 w-12 rounded-full bg-slate-100 mb-2" />
+      <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 p-8 h-full flex items-center justify-center text-slate-400 dark:text-slate-500 flex-col gap-2 transition-colors duration-300">
+        <div className="h-12 w-12 rounded-full bg-slate-100 dark:bg-slate-800 mb-2" />
         <p>Sem dados de despesas para o gráfico</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-4 h-full flex flex-col">
-      <h3 className="font-semibold text-slate-700 mb-4 px-2">Despesas por Categoria</h3>
+    <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 p-4 h-full flex flex-col transition-colors duration-300">
+      <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4 px-2">Despesas por Categoria</h3>
       <div className="flex-1 min-h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
@@ -46,14 +46,15 @@ const CategoryChart: React.FC<Props> = ({ transactions }) => {
               dataKey="value"
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} strokeWidth={0} />
               ))}
             </Pie>
-            <Tooltip 
-                formatter={(value: number) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)}
-                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+            <Tooltip
+              formatter={(value: number) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)}
+              contentStyle={{ backgroundColor: '#1e293b', color: '#f8fafc', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+              itemStyle={{ color: '#f8fafc' }}
             />
-            <Legend verticalAlign="bottom" height={36} iconType="circle" />
+            <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ color: '#94a3b8' }} />
           </PieChart>
         </ResponsiveContainer>
       </div>
