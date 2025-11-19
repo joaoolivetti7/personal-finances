@@ -55,12 +55,16 @@ const TransactionList: React.FC<Props> = ({ transactions, onDelete }) => {
                   </td>
                   <td className="px-4 py-3 font-medium text-slate-800 block sm:table-cell">
                     <div className="flex items-center gap-2">
-                        {t.type === TransactionType.EXPENSE && t.paymentMethod === PaymentMethod.CREDIT_CARD ? (
-                            <CreditCard size={14} className="text-purple-500 flex-shrink-0" title="Cartão de Crédito" />
-                        ) : t.type === TransactionType.EXPENSE ? (
-                             <Banknote size={14} className="text-slate-400 flex-shrink-0" title="Dinheiro/Débito" />
-                        ) : null}
-                        {t.description}
+                      {t.type === TransactionType.EXPENSE && t.paymentMethod === PaymentMethod.CREDIT_CARD ? (
+                        <span title="Cartão de Crédito" className="flex items-center">
+                          <CreditCard size={14} className="text-purple-500 flex-shrink-0" />
+                        </span>
+                      ) : t.type === TransactionType.EXPENSE ? (
+                        <span title="Dinheiro/Débito" className="flex items-center">
+                          <Banknote size={14} className="text-slate-400 flex-shrink-0" />
+                        </span>
+                      ) : null}
+                      {t.description}
                     </div>
                   </td>
                   <td className="px-4 py-3 block sm:table-cell">
@@ -68,14 +72,13 @@ const TransactionList: React.FC<Props> = ({ transactions, onDelete }) => {
                       {t.category}
                     </span>
                   </td>
-                  <td className={`px-4 py-3 text-right font-semibold block sm:table-cell ${
-                    t.type === TransactionType.INCOME ? 'text-emerald-600' : 'text-rose-600'
-                  }`}>
-                     <span className="sm:hidden text-slate-400 mr-2 font-normal">Valor:</span>
+                  <td className={`px-4 py-3 text-right font-semibold block sm:table-cell ${t.type === TransactionType.INCOME ? 'text-emerald-600' : 'text-rose-600'
+                    }`}>
+                    <span className="sm:hidden text-slate-400 mr-2 font-normal">Valor:</span>
                     {t.type === TransactionType.INCOME ? '+' : '-'}{formatCurrency(t.amount)}
                   </td>
                   <td className="px-4 py-3 text-right block sm:table-cell border-b sm:border-none">
-                    <button 
+                    <button
                       onClick={() => onDelete(t.id)}
                       className="text-slate-300 hover:text-rose-500 transition-colors p-1"
                       title="Remover"
