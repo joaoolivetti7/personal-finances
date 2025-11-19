@@ -63,7 +63,7 @@ const App: React.FC = () => {
             <div className="bg-brand-600 p-2 rounded-lg text-white shadow-lg shadow-brand-500/30">
               <Wallet size={20} />
             </div>
-            <span className="font-bold text-lg tracking-tight text-slate-900 dark:text-white">Finanças<span className="text-brand-600 dark:text-brand-400">AI</span></span>
+            <span className="font-bold text-lg tracking-tight text-slate-900 dark:text-white">Finanças<span className="text-brand-600 dark:text-brand-400">OLI</span></span>
           </div>
 
           <nav className="hidden md:flex gap-6">
